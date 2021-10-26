@@ -1,1 +1,20 @@
+(* Recherche élement liste *) 
 
+let rec mem l e = match l with
+    |[] -> false
+    |e1::q -> e1 = e || mem q e;;
+
+(* Ordre croissant? *) 
+
+let rec croissant l = match l with
+    |e1::e2::q -> e2>=e1 && croissant (e2::q)
+    |_ -> true
+
+(* Inverser liste*) 
+
+let inv l = 
+    let rec aux acc l = match l with
+        |[] -> acc
+        |e::q -> aux (e::acc) q
+        in aux [] l;;
+        
