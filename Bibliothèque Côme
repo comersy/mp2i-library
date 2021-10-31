@@ -58,6 +58,18 @@ let rev l =
     |[] -> []
     |[e] -> [e]
     |l -> let l1,l2 = split l in fusion (tri l1) (tri l2)
+ 
+ 
+ 
+ (* Tri Rapide *)
+ 
+ let rec partition p = function
+    |[] -> [],[]
+    |e::q -> let l1, l2 = partition p q in (if e < p then e::l1,l2 else l1,e::l2)
+ 
+ let rec quickshort = function
+    |[] -> []
+    |e::q -> let l1,l2 = partition e q in (quickshort l1) @ (e::quickshort l2);;   (* On utilise comme pivot le premier élement de la liste : e *)
 
 
 
