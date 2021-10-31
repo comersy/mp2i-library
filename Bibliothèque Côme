@@ -10,11 +10,27 @@ let rec croissant l = match l with
     |e1::e2::q -> e2>=e1 && croissant (e2::q)
     |_ -> true
 
-(* Inverser liste*) 
+(* List.rev *) 
 
-let inv l = 
+let rev l = 
     let rec aux acc = function
         |[] -> acc
         |e::q -> aux (e::acc) q
         in aux [] l;;
-        
+
+(* Dichotomie *)
+
+let dichotomie e t = 
+    let rec aux i j = 
+        let m = (i+j)/2 in
+        if i >= j 
+            then false
+        else
+            if t.(m) = e 
+                then true
+            else
+                if t.(m) > e 
+                    then aux i (m-1)
+                else
+                    aux (m+1) j 
+    in aux 0 (Array.length t);;
