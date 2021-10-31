@@ -13,7 +13,7 @@ let rec croissant l = match l with
 (* Inverser liste*) 
 
 let inv l = 
-    let rec aux acc l = match l with
+    let rec aux acc = function
         |[] -> acc
         |e::q -> aux (e::acc) q
         in aux [] l;;
