@@ -4,12 +4,16 @@ let rec mem l e = match l with
     |[] -> false
     |e1::q -> e1 = e || mem q e;;
 
+
+
 (* Ordre croissant? *) 
 
 let rec croissant l = match l with
     |[] -> true
     |[e] -> true
     |e1::e2::q -> e2 >= e1 && croissant (e2::q);;
+
+
 
 (* List.rev *) 
 
@@ -19,17 +23,43 @@ let rev l =
         |e::q -> aux (e::acc) q
         in aux [] l;;
  
+ 
+ 
  (* List.map *)
  
  let rec map f = function
     |[] -> []
     |e::q -> f(e)::(map f q);;
  
+ 
+ 
  (* Fonction @ *)
  
  let rec concat l1 l2 = match l1 with
     |[] -> l2
     |e::q -> e::(concat q l2)
+
+
+
+ (* Tri Fusion *) 
+ 
+ let rec split = function
+    |[] -> [],[]
+    |[e] -> [e],[]
+    |e1::e2::q -> let l1,l2 = split q in e1::l1,e2::l2;;
+ 
+ let rec fusion l1 l2 = match l1,l2 with
+    |_,[] -> l1
+    |[],_ -> l2
+    |e1::q1, e2::q2 when e1 < e2 -> e1::(fusion q1 l2)
+    |e1::q1, e2::q2 -> e2::(fusion l1 q2)
+ 
+ let rec tri = function
+    |[] -> []
+    |[e] -> [e]
+    |l -> let l1,l2 = split l in fusion (tri l1) (tri l2)
+
+
 
 (* Dichotomie *)
 
