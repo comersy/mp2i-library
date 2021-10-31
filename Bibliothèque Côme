@@ -7,8 +7,9 @@ let rec mem l e = match l with
 (* Ordre croissant? *) 
 
 let rec croissant l = match l with
-    |e1::e2::q -> e2>=e1 && croissant (e2::q)
-    |_ -> true
+    |[] -> true
+    |[e] -> true
+    |e1::e2::q -> e2 >= e1 && croissant (e2::q);;
 
 (* List.rev *) 
 
@@ -17,6 +18,12 @@ let rev l =
         |[] -> acc
         |e::q -> aux (e::acc) q
         in aux [] l;;
+ 
+ (* List.map *)
+ 
+ let rec map f = function
+    |[] -> []
+    |e::q -> f(e)::(map f q);;
 
 (* Dichotomie *)
 
