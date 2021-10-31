@@ -24,6 +24,12 @@ let rev l =
  let rec map f = function
     |[] -> []
     |e::q -> f(e)::(map f q);;
+ 
+ (* Fonction @ *)
+ 
+ let rec concat l1 l2 = match l1 with
+    |[] -> l2
+    |e::q -> e::(concat q l2)
 
 (* Dichotomie *)
 
