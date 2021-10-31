@@ -77,7 +77,7 @@ let rev l =
 
 let dichotomie e t = 
     let rec aux i j = 
-        let m = (i+j)/2 in
+        let m = (i+j+1)/2 in
         if i > j 
             then false
         else
