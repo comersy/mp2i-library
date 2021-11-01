@@ -125,3 +125,12 @@ let rec exp_rapide1 a n =
         if n mod 2 = 0 
             then b*b
         else a*b*b;;
+
+
+(* PGCD *) 
+
+let rec pgcd a b = 
+    if b = 0 
+        then a 
+    else
+        pgcd b (a mod b);; 
