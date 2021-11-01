@@ -117,11 +117,11 @@ let dichotomie e t =
 
 (* Exponentiation Rapide *)
 
-let rec exp_rapide a n = 
+let rec exp_rapide1 a n =
     if n = 0 
         then 1
-    else
-        if a mod 2 = 0 
-            then let b = exp_rapide a (n/2) in b*b
-        else
-            let c = exp_rapide a ((n-1)/2) in c*c*a;;
+    else 
+        let b = exp_rapide a (n/2) in (* pour éviter de faire 2 appels récursifs *)
+        if n mod 2 = 0 
+            then b*b
+        else a*b*b;;
