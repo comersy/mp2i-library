@@ -147,3 +147,14 @@ let rec hanoi n tige1 tige2 =
         print_string ((string_of_int tige1)^"->"^(string_of_int tige2)^"\n");
         hanoi (n-1) tige_int tige2 in hanoi 3 0 2;
         print_newline();;
+
+
+(* Fibonacci accumulateur *) 
+
+let rec fibo2 n a b =
+  (* n est le nombre de termes restants à calculer *)
+  (* a est le dernier terme calculé de la suite *)
+  (* b est l'avant-dernier terme calculé *)
+  if n = 0 then b
+  else fibo2 (n - 1) (a + b) a in (* les derniers termes deviennent a+b et a *)
+fibo2 6 1 1
