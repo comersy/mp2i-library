@@ -115,6 +115,33 @@ let dichotomie e t =
 
 
 
+(* Quadrichotomie *)
+
+let quadricho e t = 
+    let rec aux i j = 
+        if i > j 
+            then false
+        else
+            let m1 = (3*i + j)/4 in 
+            let m2 = (2*i + 2*j)/4 in 
+            let m3 = (i + 3*j)/4 in 
+            if t.(m1) = e || t.(m2) = e || t.(m3) = e 
+                then true
+            else 
+                if t.(m1) > e 
+                    then aux i (m1-1)
+                else
+                    if t.(m3) < e 
+                        then aux (m3+1) j
+                    else
+                        if t.(m2) < e
+                            then aux (m1+1) (m2-1)
+                        else
+                            aux (m2+1) (m3-1)
+    in aux 0 (Array.length t -1)
+    
+    
+
 (* Exponentiation Rapide *)
 
 let rec exp_rapide1 a n =
