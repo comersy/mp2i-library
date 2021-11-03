@@ -57,6 +57,17 @@ let doublon t =
         done;
     done;
 !a;;
+
+
+
+(* Swap 2 indices d'un tableau *) 
+
+let swap t i j = 
+    let a = t.(i) in 
+    t.(i) <- t.(j);
+    t.(j) <- a;
+t;;
+
  
  
  (* Fonction @ *)
