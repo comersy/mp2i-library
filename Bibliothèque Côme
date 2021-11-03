@@ -33,7 +33,7 @@ let rev l =
    
    
    
- (* Array.rev *) 
+ (* Inverser Tableau *) 
  
  let inv t = 
     let n = Array.length t - 1 in
@@ -44,7 +44,19 @@ let rev l =
         t.(n-i) <- a
     done;
 t;;
- 
+
+
+
+(* Doublon Tableau ? *)
+
+let doublon t = 
+    let a = ref false in
+    for i = 0 to Array.length t -1 do 
+        for j = (i+1) to Array.length t -1 do 
+            if t.(i) = t.(j) then a:= true
+        done;
+    done;
+!a;;
  
  
  (* Fonction @ *)
