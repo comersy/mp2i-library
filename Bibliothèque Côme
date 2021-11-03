@@ -30,6 +30,20 @@ let rev l =
  let rec map f = function
     |[] -> []
     |e::q -> f(e)::(map f q);;
+   
+   
+   
+ (* Array.rev *) 
+ 
+ let inv t = 
+    let n = Array.length t - 1 in
+    for i = 0 to n/2 do 
+        let a = t.(i) in 
+        let b = t.(n-i) in 
+        t.(i) <- b;
+        t.(n-i) <- a
+    done;
+t;;
  
  
  
@@ -37,7 +51,7 @@ let rev l =
  
  let rec concat l1 l2 = match l1 with
     |[] -> l2
-    |e::q -> e::(concat q l2)
+    |e::q -> e::(concat q l2);;
 
 
 
@@ -52,12 +66,12 @@ let rev l =
     |_,[] -> l1
     |[],_ -> l2
     |e1::q1, e2::q2 when e1 < e2 -> e1::(fusion q1 l2)
-    |e1::q1, e2::q2 -> e2::(fusion l1 q2)
+    |e1::q1, e2::q2 -> e2::(fusion l1 q2);;
  
  let rec tri = function
     |[] -> []
     |[e] -> [e]
-    |l -> let l1,l2 = split l in fusion (tri l1) (tri l2)
+    |l -> let l1,l2 = split l in fusion (tri l1) (tri l2);;
  
  
  
@@ -65,7 +79,7 @@ let rev l =
  
  let rec partition p = function
     |[] -> [],[]
-    |e::q -> let l1, l2 = partition p q in (if e < p then e::l1,l2 else l1,e::l2)
+    |e::q -> let l1, l2 = partition p q in (if e < p then e::l1,l2 else l1,e::l2);;
  
  let rec quickshort = function
     |[] -> []
@@ -138,7 +152,7 @@ let quadricho e t =
                             then aux (m1+1) (m2-1)
                         else
                             aux (m2+1) (m3-1)
-    in aux 0 (Array.length t -1)
+    in aux 0 (Array.length t -1);;
     
     
 
