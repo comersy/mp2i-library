@@ -221,3 +221,23 @@ let fibo n =
             then b 
         else aux (n-1) (a+b) a
     in aux n 1 1;;
+
+
+
+(* Tableau en liste *) 
+
+let list_of_array t =
+  Array.fold_right List.cons t []
+
+
+
+(* Liste en tableau *) 
+
+let array_of_list l = 
+    let n = List.length l in 
+        if n = 0 
+            then [||]
+        else
+            let t = Array.make n 0 in
+            List.iteri (Array.set t) l;
+t;;
