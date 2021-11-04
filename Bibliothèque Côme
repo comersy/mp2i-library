@@ -110,6 +110,18 @@ t;;
 
 
 
+(* Tri par insertion *) 
+
+let rec inser e l = match l with
+    |[] -> [e]
+    |x::q -> if x > e then e::l else x::(inser e q);;
+
+let rec tri = function
+    |[] -> []
+    |e::q -> insere e (tri q)
+    
+    
+
 (* Dichotomie *)
 
 let dichotomie e t = 
