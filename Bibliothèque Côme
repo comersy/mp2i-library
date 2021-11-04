@@ -226,18 +226,15 @@ let fibo n =
 
 (* Tableau en liste *) 
 
-let list_of_array t =
+let array_of_list t =
   Array.fold_right List.cons t []
 
 
 
 (* Liste en tableau *) 
 
-let array_of_list l = 
+let list_of_array l = 
     let n = List.length l in 
-        if n = 0 
-            then [||]
-        else
-            let t = Array.make n 0 in
-            List.iteri (Array.set t) l;
+    let t = Array.make n 0 in
+    List.iteri (Array.set t) l;
 t;;
