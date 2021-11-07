@@ -284,4 +284,23 @@ let suppr t k =
 
 
 
-(* Liste Chainé *)
+(* Zipper *)
+
+type 'a zipper = { left: 'a list; right: 'a list}
+
+let move_right z = match z.right with
+            |[] -> failwith "Right est vide" 
+            |e::q -> {left = e::z.left; right = q}
+
+let move_left z = match z.left,z.right with
+            |[],_ -> failwith "Left est vide" 
+            |e::q,l -> {left = q; right = e::l}
+
+let ajouter z e = {left = z1.left; right = e::(z1.right)}
+
+let supprimer z = match z.right with
+    |[] -> failwith "Right vide"
+    |e::q -> {left = z.left; right = q}
+
+let list_of_zipper z = 
+    List.rev (z.left) @ z.right
