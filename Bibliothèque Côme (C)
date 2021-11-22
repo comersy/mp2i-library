@@ -29,7 +29,6 @@ void liste_premier (int a, int n) {
 
 
 
-
 // Expo Rapide //
 
 int expo_rap (int a, int n) {
@@ -44,5 +43,33 @@ int expo_rap (int a, int n) {
         else {
             return a*b*b;
         }
+    }
+}
+
+
+
+
+// PGCD //
+
+int pgcd (int a, int b) {
+    if (b == 0) 
+        return a;
+    else
+        return pgcd (b, (a%b));
+}
+
+
+
+
+// Hanoi //
+
+void hanoi (int n, int tige1, int tige2) {
+    if (n==0) 
+        return;
+    else {
+        int tige_int = 3 - tige1 - tige2;;
+        hanoi ((n-1), tige1, tige_int);
+        printf (" %d : -> %d ",tige1,tige2);
+        hanoi ((n-1), tige_int, tige2);
     }
 }
