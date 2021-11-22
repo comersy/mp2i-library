@@ -73,3 +73,21 @@ void hanoi (int n, int tige1, int tige2) {
         hanoi ((n-1), tige_int, tige2);
     }
 }
+
+
+
+
+// Fibonacci //
+
+int acc (int n, int a, int b) {
+    if (n==0) {
+        return b;
+        }
+    else {
+        return (acc ((n-1), (a+b), a));
+        }
+}
+
+int fibo (int n) {
+    return acc (n,1,1);
+}
