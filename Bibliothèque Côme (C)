@@ -1,0 +1,48 @@
+// Nombre Premier //
+
+bool premier (int n) {
+    bool p = true;
+    if (n>=2) {
+        for (int i = 2; i <= (n/2); i++) {
+            if (n%i == 0) {
+                p = false;
+                break;
+            }
+        }
+    }
+    else {
+        p = false;
+    }
+return p;
+};
+
+
+void liste_premier (int a, int n) {
+    printf("Liste des nombres premier de %d à %d: ",a,n);
+    for (int i = a; i <= n; i++) {
+        if (premier (i)) {
+            printf(" %d", i);
+            }
+    }
+}
+
+
+
+
+
+// Expo Rapide //
+
+int expo_rap (int a, int n) {
+    if (n == 0) {
+        return 1;
+        }
+    else {
+        int b = expo_rap (a, (n/2));
+        if (n%2 == 0) {
+            return b*b;
+        }
+        else {
+            return a*b*b;
+        }
+    }
+}
