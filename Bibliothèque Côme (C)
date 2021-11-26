@@ -222,3 +222,84 @@ bool doublon (int* t,int n) {
     }
 return false;
 }
+
+
+
+#################################
+#######LISTES CHAINES############
+#################################
+
+
+struct list {
+    int elem;
+    list* next;
+}
+
+typedef struct list list
+
+
+// ADD //
+
+list* add(list* l, int e) {
+    list* l1 = (list*)malloc(sizeof(list));
+    l1 -> elem = e;
+    l1 -> next = l;
+    return l1;
+}
+
+
+// Listes des n premiers entiers //
+
+list* range(int n){
+    list* l = NULL;
+    for (int i = 0; i<=n; i++) {
+        l = add(l,i);
+    }
+return l;
+}
+
+
+// Print_liste //
+
+void print_list(list* l) {
+    while (l!=NULL) {
+        printf("%d ",l->elem);
+        l = l->next;
+    }
+}
+
+
+// Element appartient à la liste? //
+
+bool has(list* l, int e){
+    while (l!=NULL) {
+        if (l->elem == e)
+            return true;
+    }
+return false;
+}
+
+
+// Taille d'une liste //
+
+
+int size (list* l){
+    int s = 0;
+    while (l!=NULL) {
+        s += 1;
+        l = l-> next;
+    }
+    return s;
+}
+
+
+// Inverser une liste //
+
+list* reverse (list* l){
+    list* l1 = NULL;
+    while (l!=NULL){
+        l1 = add(l1,l->elem);
+        l = l->next;
+    }
+return l1;
+}
