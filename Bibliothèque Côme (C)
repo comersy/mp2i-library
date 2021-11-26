@@ -128,6 +128,20 @@ void swap(int* t, int i, int j){
 }
 
 
+// Trier Tableau O(n2) //
+
+int* tri_bubble (int* t,int n) {
+    for (int i = 0; i < n-1; i++) {
+        for (int j = i+1; j<n; j++) {
+            if (t[j]<t[i])
+                swap (t,i,j);
+        }
+    }
+return t;
+}
+
+
+
 // Renversement Tableau //
 
 void reverse(int* t,int n){
@@ -196,3 +210,15 @@ bool dichotomie (int* t, int i, int j, int e){
     }
 }
 
+
+// Doublons? //
+
+bool doublon (int* t,int n) {
+    for (int i = 0; i < n-1; i++) {
+        for (int j = i+1; j<n; j++) {
+            if (t[j]==t[i])
+                return true;
+        }
+    }
+return false;
+}
