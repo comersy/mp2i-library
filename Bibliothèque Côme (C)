@@ -1,3 +1,9 @@
+
+##############################################
+########ARITHMETIQUE CLASSIQUE################
+##############################################
+
+
 // Nombre Premier //
 
 bool premier (int n) {
@@ -91,3 +97,83 @@ int acc (int n, int a, int b) {
 int fibo (int n) {
     return acc (n,1,1);
 }
+
+
+
+
+############################
+#########TABLEAU############
+############################
+
+
+
+
+//Somme//
+
+int somme (int* t, int n) {
+    int s = 0;
+    for (int i= 0; i <n; i++){
+        s += t[i];
+    }
+return s;
+}
+
+
+// Swap D'indice // 
+
+void swap(int* t, int i, int j){
+    int p = t[i];
+    t[i] = t[j];
+    t[j] = p;
+}
+
+
+// Renversement Tableau //
+
+void reverse(int* t,int n){
+    for (int i =0; i<=(n/2); i++) {
+        swap (t,i,n-i-1);
+    }
+}
+
+
+// Tableau des n premiers entiers //
+
+
+int* range(int n){
+    int* t = (int*)malloc(n*sizeof(int));
+    for (int i = 0; i<n;i++){
+        t[i] = i;
+    }
+return t;
+}
+
+
+
+// Print un Tableau //
+
+void print_tab(int*t,int n) {
+    for (int i=0; i<n; i++) {
+        printf("%d ",t[i]);
+    }
+}
+
+// Copie t1 dans t2 //
+
+int* copy(int*t,int*t2,int n, int m){
+    for (int i = n; i<m;i++){
+        t2[i] = t[i-n];
+    }
+return t2;
+}
+
+
+// Concat deux tableaux //
+
+int* concat(int* t1, int n1, int* t2, int n2){
+    int* t3 = (int*)malloc((n1+n2)*sizeof(int));
+    copy (t1,t3,0,n1);
+    copy (t2,t3,n1,n2+n1);
+    return t3;
+}
+
