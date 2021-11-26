@@ -177,3 +177,22 @@ int* concat(int* t1, int n1, int* t2, int n2){
     return t3;
 }
 
+
+// Dichotomie //
+
+bool dichotomie (int* t, int i, int j, int e){
+    if (i > j)
+        return false;
+    else {
+        int m = (i+j)/2; 
+        if (t[m] == e) 
+            return true;
+        else {
+            if (t[m]>e)
+                return dichotomie(t,i,(m-1),e);
+            else
+                return dichotomie(t,(m+1),j,e);
+        }
+    }
+}
+
