@@ -1,3 +1,10 @@
+#####################
+#######LISTES########
+#####################
+
+
+
+
 (* Recherche élement liste *) 
 
 let rec mem l e = match l with
@@ -30,47 +37,10 @@ let rev l =
  let rec map f = function
     |[] -> []
     |e::q -> f(e)::(map f q);;
-   
-   
-   
- (* Inverser Tableau *) 
- 
- let inv t = 
-    let n = Array.length t - 1 in
-    for i = 0 to n/2 do 
-        let a = t.(i) in 
-        let b = t.(n-i) in 
-        t.(i) <- b;
-        t.(n-i) <- a
-    done;
-t;;
-
-
-
-(* Doublon Tableau ? *)
-
-let doublon t = 
-    let a = ref false in
-    for i = 0 to Array.length t -1 do 
-        for j = (i+1) to Array.length t -1 do 
-            if t.(i) = t.(j) then a:= true
-        done;
-    done;
-!a;;
-
-
-
-(* Swap 2 indices d'un tableau *) 
-
-let swap t i j = 
-    let a = t.(i) in 
-    t.(i) <- t.(j);
-    t.(j) <- a;
-t;;
-
  
  
- (* Fonction @ *)
+ 
+  (* Fonction @ *)
  
  let rec concat l1 l2 = match l1 with
     |[] -> l2
@@ -188,8 +158,75 @@ let quadricho e t =
                         else
                             aux (m2+1) (m3-1)
     in aux 0 (Array.length t -1);;
+   
+   
+  
+  
+  
+  ####################
+  ######TABLEAU#######
+  ####################
+  
+  
+  
+ (* Inverser Tableau *) 
+ 
+ let inv t = 
+    let n = Array.length t - 1 in
+    for i = 0 to n/2 do 
+        let a = t.(i) in 
+        let b = t.(n-i) in 
+        t.(i) <- b;
+        t.(n-i) <- a
+    done;
+t;;
+
+
+
+(* Doublon Tableau ? *)
+
+let doublon t = 
+    let a = ref false in
+    for i = 0 to Array.length t -1 do 
+        for j = (i+1) to Array.length t -1 do 
+            if t.(i) = t.(j) then a:= true
+        done;
+    done;
+!a;;
+
+
+
+(* Swap 2 indices d'un tableau *) 
+
+let swap t i j = 
+    let a = t.(i) in 
+    t.(i) <- t.(j);
+    t.(j) <- a;
+t;;
+
+
+(* Tableau en liste *) 
+
+let array_of_list t =
+  Array.fold_right List.cons t []
+
+
+
+(* Liste en tableau *) 
+
+let list_of_array l = 
+    let n = List.length l in 
+    let t = Array.make n 0 in
+    List.iteri (Array.set t) l;
+t;;
     
-    
+
+
+######################################
+#####ARITHMETIQUE CLASSIQUE###########
+######################################
+
+
 
 (* Exponentiation Rapide *)
 
@@ -235,21 +272,10 @@ let fibo n =
     in aux n 1 1;;
 
 
+##########################
+########STRUCTURE#########
+##########################
 
-(* Tableau en liste *) 
-
-let array_of_list t =
-  Array.fold_right List.cons t []
-
-
-
-(* Liste en tableau *) 
-
-let list_of_array l = 
-    let n = List.length l in 
-    let t = Array.make n 0 in
-    List.iteri (Array.set t) l;
-t;;
 
 
 
