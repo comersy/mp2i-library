@@ -99,6 +99,16 @@ int fibo (int n) {
 }
 
 
+// Quotient et reste de a et b (sans %) //
+
+void divmod (int a, int b, int* q, int*r) {
+    *q = 0;
+    *r = a;
+    while (*r >= b) {
+        *r -= b;
+        (*q) ++;
+    }
+}
 
 
 ############################
