@@ -362,6 +362,9 @@ list* fusion(list* l1,list* l2) {
 
 
 
+
+
+
 // TREE //
 
 
@@ -398,4 +401,23 @@ int hauteur(tree* t) {
         else
             return 1 + hauteur (t->d);
     }
+}
+
+
+bool mem(tree* t, int e) {
+    if (t == NULL) 
+        return false;
+    if ((t->val == e) | (mem(t->g,e) == true) | (mem(t->d,e) == true))
+        return true;
+    else
+        return false;
+}
+
+
+bool complet (tree* t) {
+    if (t == NULL) 
+        return true;
+    if ((size(t->g) == size(t->d)) && (complet(t->g) == true) && (complet(t->d) == true))
+            return true;
+    return false;
 }
