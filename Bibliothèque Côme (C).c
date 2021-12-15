@@ -358,3 +358,44 @@ list* fusion(list* l1,list* l2) {
         }
     }
 }
+
+
+
+
+// TREE //
+
+
+typedef struct tree {
+    tree* g;
+    tree* d;
+    int val;
+} tree;
+
+
+tree* make_node (int r){
+    tree* t = (tree*)malloc(sizeof(tree));
+    t -> g = t -> d = NULL;
+    t -> val = r;
+    return t;
+}
+
+
+int size (tree* t) {
+    if (t == NULL)
+        return 0;
+    else
+        return 1 + size(t->g) + size(t->d);
+}
+
+
+
+int hauteur(tree* t) {
+    if (t == NULL)
+        return -1;
+    else {
+        if (size(t->g) > size(t->d)) 
+            return 1 + hauteur (t->g);
+        else
+            return 1 + hauteur (t->d);
+    }
+}
