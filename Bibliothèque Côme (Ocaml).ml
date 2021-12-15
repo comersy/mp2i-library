@@ -330,3 +330,26 @@ let supprimer z = match z.right with
 
 let list_of_zipper z = 
     List.rev (z.left) @ z.right
+    
+    
+    
+    
+    
+#################
+#######TREE######
+#################
+
+
+type 'a binary_tree = 
+    |E
+    |N of 'a * 'a binary_tree * 'a binary_tree;;
+
+
+let rec size tree = match tree with
+    |E -> 0;
+    |N(r,g,d) -> 1 + size g + size d;;
+
+
+let rec mem tree e = match tree with
+    |E -> false
+    |N(r,g,d) -> r = e || mem g e || mem d e;;
